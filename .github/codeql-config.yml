@@ -1,0 +1,21 @@
+name: "FED TTS CodeQL Config"
+
+# Disable queries that may produce false positives
+disable-default-queries: false
+
+# Custom query suites
+queries:
+  - uses: security-and-quality
+
+# Path filters to exclude from analysis
+paths:
+  - "!dist/**"
+  - "!build/**"
+  - "!*.egg-info/**"
+  - "!venv/**"
+  - "!node_modules/**"
+
+# Path filters for Python
+paths-ignore:
+  - "tests/**"
+  - "examples/**"

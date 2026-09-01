@@ -1,0 +1,56 @@
+name: Greetings
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  greeting:
+    name: Greet New Contributors
+    runs-on: ubuntu-latest
+    steps:
+      - name: Greet on first issue
+        uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: |
+            👋 Welcome to FED TTS! Thank you for opening your first issue.
+            
+            We appreciate you taking the time to report this. Here are a few things
+            to help you get started:
+            
+            - 📖 Check our [FAQ](https://github.com/fed-tts/fed-tts/blob/main/FAQ.md) for common questions
+            - 📋 Read the [README](https://github.com/fed-tts/fed-tts#readme) for project overview
+            - 💬 Join [GitHub Discussions](https://github.com/fed-tts/fed-tts/discussions) for questions
+            - ☕ Support us on [Ko-fi](https://ko-fi.com/fedtts)
+            
+            **⚠️ No AI Reminder:** FED TTS follows a strict "No AI" philosophy — no neural
+            networks, no cloud APIs, no LLMs. All features use deterministic algorithms.
+            
+            A maintainer will review your issue soon. Thank you! 🎉
+            
+          pr-message: |
+            🎉 Welcome to FED TTS! Thank you for your first pull request!
+            
+            We're excited to review your contribution. Here's what to expect:
+            
+            1. **Automated checks** will run (linting, tests, type checking)
+            2. A **maintainer** will review your code
+            3. We may request changes or clarification
+            4. Once approved, your PR will be merged 🚀
+            
+            **Please ensure:**
+            - [ ] Your code follows the "No AI" philosophy (no ML/cloud APIs)
+            - [ ] Tests pass locally (`pytest`)
+            - [ ] Code is formatted (`black . && ruff check .`)
+            - [ ] You've updated documentation if needed
+            
+            Thank you for contributing to the open-source community! 💜
+            
+            ☕ Support FED TTS on [Ko-fi](https://ko-fi.com/fedtts)

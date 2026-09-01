@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: FED TTS Documentation
+    url: https://github.com/fed-tts/fed-tts#readme
+    about: Please check the README and FAQ before opening an issue.
+  - name: GitHub Discussions
+    url: https://github.com/fed-tts/fed-tts/discussions
+    about: Ask questions and discuss ideas with the community.
+  - name: Ko-fi Support
+    url: https://ko-fi.com/fedtts
+    about: Support the project financially via Ko-fi.
+  - name: Security Vulnerability
+    url: https://github.com/fed-tts/fed-tts/security/policy
+    about: Please report security vulnerabilities privately.

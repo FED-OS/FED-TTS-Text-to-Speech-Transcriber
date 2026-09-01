@@ -1,0 +1,99 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install MkDocs and dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs mkdocs-material mkdocs-autorefs
+
+      - name: Create MkDocs config if not exists
+        run: |
+          if [ ! -f mkdocs.yml ]; then
+            cat > mkdocs.yml << 'EOF'
+            site_name: FED TTS Documentation
+            site_description: Fluid Enhanced Dynamic Text-to-Speech - No AI Transcriber + Read Aloud + Grammar Checker
+            site_url: https://fed-tts.github.io/fed-tts
+            repo_name: fed-tts/fed-tts
+            repo_url: https://github.com/fed-tts/fed-tts
+            theme:
+              name: material
+              features:
+                - navigation.tabs
+                - navigation.sections
+                - navigation.expand
+                - search.suggest
+                - search.highlight
+              palette:
+                - scheme: default
+                  primary: blue
+                  toggle:
+                    icon: material/toggle-switch-off-outline
+                    name: Switch to dark mode
+                - scheme: slate
+                  primary: blue
+                  toggle:
+                    icon: material/toggle-switch
+                    name: Switch to light mode
+            markdown_extensions:
+              - admonition
+              - codehilite
+              - toc:
+                  permalink: true
+              - pymdownx.superfences
+            nav:
+              - Home: index.md
+              - Quick Start: quickstart.md
+              - Architecture: architecture.md
+              - API Reference: api.md
+            EOF
+          fi
+
+      - name: Build site
+        run: mkdocs build --strict --verbose
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

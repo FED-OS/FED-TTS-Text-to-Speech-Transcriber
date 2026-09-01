@@ -1,0 +1,29 @@
+# CODEOWNERS file for FED TTS
+# These owners will be automatically requested for review when their code is changed.
+# https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners
+
+# Default owner - all files not explicitly listed
+*       @fed-tts/maintainers
+
+# Core application
+/app.py                 @fed-tts/maintainers
+/src/                   @fed-tts/maintainers
+
+# Tests
+/tests/                 @fed-tts/maintainers
+
+# CI/CD and GitHub configuration
+/.github/               @fed-tts/maintainers
+
+# Documentation
+/docs/                  @fed-tts/maintainers
+/*.md                   @fed-tts/maintainers
+
+# Packaging and dependencies
+/pyproject.toml         @fed-tts/maintainers
+/requirements*.txt      @fed-tts/maintainers
+/Dockerfile             @fed-tts/maintainers
+
+# Security
+/SECURITY.md            @fed-tts/maintainers
+/.github/SECURITY.md    @fed-tts/maintainers

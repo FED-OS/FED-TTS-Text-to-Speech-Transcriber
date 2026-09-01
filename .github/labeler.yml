@@ -1,0 +1,81 @@
+# Labeler configuration for FED TTS
+# This file is used by the actions/labeler GitHub Action
+# to automatically label pull requests based on changed files.
+# https://github.com/actions/labeler
+
+# Core application
+app:
+  - changed-files:
+      - any-glob-to-any-file: "app.py"
+
+source-code:
+  - changed-files:
+      - any-glob-to-any-file: "src/**/*"
+
+tests:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "tests/**/*"
+          - "**/test_*.py"
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "*.md"
+          - "docs/**/*"
+          - "examples/**/*"
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "requirements*.txt"
+          - "pyproject.toml"
+          - "environment.yml"
+          - "Dockerfile"
+
+ci-cd:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/workflows/**/*"
+          - ".github/dependabot.yml"
+
+github-config:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/**/*"
+          - "!.github/workflows/**/*"
+
+styling:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "styles.css"
+          - "**/*.css"
+
+packaging:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "pyproject.toml"
+          - "MANIFEST.in"
+          - "setup.sh"
+          - "Procfile"
+
+docker:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "Dockerfile"
+          - ".github/workflows/docker.yml"
+
+grammar-rules:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "src/fed_tts/grammar_checker.py"
+
+tts:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "src/fed_tts/tts.py"
+
+transcriber:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "src/fed_tts/transcriber.py"

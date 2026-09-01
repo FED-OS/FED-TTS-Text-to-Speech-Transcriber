@@ -1,0 +1,52 @@
+name: Dependency Review
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  dependency-review:
+    name: Dependency Review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          config-file: .github/dependency-review-config.yml
+          comment-summary-in-pr: on-failure
+          fail-on-severity: moderate
+          deny-licenses: GPL-3.0, AGPL-3.0
+          warning-licenses: LGPL-2.1, LGPL-3.0
+          base-ref: ${{ github.event.pull_request.base.sha }}
+          head-ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Check for AI/ML dependencies
+        run: |
+          echo "Checking for AI/ML dependencies in PR..."
+          
+          # Check requirements files for AI/ML packages
+          AI_PACKAGES="torch tensorflow transformers openai anthropic langchain llama-index sentence-transformers gensim spacy nltk-openai huggingface-hub"
+          
+          FOUND_AI=false
+          for pkg in $AI_PACKAGES; do
+            if grep -qi "$pkg" requirements.txt requirements-dev.txt pyproject.toml 2>/dev/null; then
+              echo "❌ AI/ML package found: $pkg"
+              FOUND_AI=true
+            fi
+          done
+          
+          if [ "$FOUND_AI" = "true" ]; then
+            echo ""
+            echo "FED TTS follows a strict 'No AI' philosophy!"
+            echo "AI/ML dependencies are not allowed."
+            exit 1
+          fi
+          
+          echo "✅ No AI/ML dependencies found in requirements"
