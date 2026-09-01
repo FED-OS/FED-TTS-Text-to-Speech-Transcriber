@@ -1,0 +1,2 @@
+streamlit>=1.29.0
+pyspellchecker>=0.7.0

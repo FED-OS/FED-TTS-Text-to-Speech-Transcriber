@@ -1,0 +1,91 @@
+/* Streamlit Custom Theme - FED TTS */
+/* Load in app.py: with open('styles.css') as f: st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True) */
+
+.stApp {
+    background-color: #f8f9fa;
+}
+
+h1, h2, h3 {
+    color: #2c3e50;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+h1 {
+    border-bottom: 2px solid #4a6fa5;
+    padding-bottom: 10px;
+}
+
+.stTextArea textarea {
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 15px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+.stTextArea textarea:focus {
+    border-color: #4a6fa5;
+    box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+}
+
+[data-testid="stSidebar"] {
+    background-color: #ffffff;
+    border-right: 1px solid #e9ecef;
+}
+
+div.stButton > button {
+    background-color: #4a6fa5;
+    color: white;
+    border-radius: 6px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+div.stButton > button:hover {
+    background-color: #3a5a8a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(74, 111, 165, 0.3);
+}
+
+div.stButton > button:active {
+    transform: translateY(0);
+}
+
+.stAlert {
+    border-radius: 8px;
+    border-left: 4px solid #f39c12;
+}
+
+.stFileUploader {
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.stFileUploader:hover {
+    border-color: #4a6fa5;
+}
+
+.stMetric {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #e9ecef;
+}
+
+.stCaption {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+/* Divider styling */
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(74, 111, 165, 0), rgba(74, 111, 165, 0.5), rgba(74, 111, 165, 0));
+    margin: 20px 0;
+}

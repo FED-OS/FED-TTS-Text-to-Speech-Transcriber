@@ -1,0 +1,10 @@
+name: fed-tts
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - streamlit>=1.29.0
+    - pyspellchecker>=0.7.0
