@@ -1,3 +1,5 @@
+<img width="1164" height="966" alt="Screenshot 2026-09-01 171028" src="https://github.com/user-attachments/assets/3cab76f9-e6ce-4330-a622-57d8807a65df" />
+
 # 🎙️ FED TTS - Fluid Enhanced Dynamic Text Generator
 
 **Generate text from the words in your uploaded files. 100% Offline. Zero AI.**
