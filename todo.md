@@ -1,19 +1,23 @@
 # ✅ FED TTS Todo List
 
 ## Core Features
-- [x] File upload (MP3, WAV, M4A, FLAC, OGG)
-- [x] Audio playback with native player
-- [x] Manual transcription text area
-- [x] Session state persistence
+- [x] Text file upload (.txt, .csv, .md, .docx, .log, .json, .xml)
+- [x] Word extraction from uploaded files
+- [x] Word frequency analysis + full vocabulary display
+- [x] Total / unique word count metrics
+- [x] Markov chain text generator (N-gram, style mimic)
+- [x] Random word-pool generator (mad-libs style)
+- [x] Generation controls (mode, length, order, seed word, random seed)
+- [x] Reproducible generation via random seed
+- [x] Download generated text as .txt
 - [x] Dictionary-based spell check
 - [x] Regex-based grammar rules (would of, could of, should of, must of)
 - [x] Double space detection
 - [x] Passive voice detection
 - [x] Long sentence detection
 - [x] Repeated word detection
-- [x] Native browser TTS
+- [x] Native browser TTS (read generated text aloud)
 - [x] Stop speech button
-- [x] Custom HTML5 audio player with shortcuts
 - [ ] Keyboard shortcuts (Ctrl+Space, Ctrl+Left/Right)
 
 ## UI/UX Improvements
