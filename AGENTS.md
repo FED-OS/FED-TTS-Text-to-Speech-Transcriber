@@ -2,7 +2,7 @@
 
 ## Role
 
-You are an AI agent helping maintain and develop FED TTS, a Streamlit-based transcription and TTS application that is 100% AI-free and offline.
+You are an AI agent helping maintain and develop FED TTS, a Streamlit-based text-generation application that is 100% AI-free and offline. The core feature is generating new text from the words extracted out of user-uploaded text files (.txt, .csv, .md, .docx).
 
 ## Your Responsibilities
 
@@ -38,8 +38,9 @@ You are an AI agent helping maintain and develop FED TTS, a Streamlit-based tran
 app.py                      → Main Streamlit entry point
 src/fed_tts/
     __init__.py             → Package init
+    text_generator.py       → CORE: extract words from files + Markov chain & word-pool text generation
     grammar_checker.py      → Regex + dictionary grammar checking
-    transcriber.py          → Transcription helpers (audio player, timestamps)
+    transcriber.py          → Audio player / timestamp helpers (legacy utilities)
     tts.py                  → Browser SpeechSynthesis TTS JavaScript generation
 tests/                      → pytest test suite
 docs/                       → Documentation

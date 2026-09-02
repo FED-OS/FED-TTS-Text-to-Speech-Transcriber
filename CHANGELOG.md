@@ -7,12 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- ✨ **Text generation from uploaded files** (new core feature): upload `.txt`, `.csv`, `.md`, `.docx`, `.log`, `.json`, `.xml` files and generate new text built from their words.
+- Markov chain generator that mimics the style of the source files (N-gram transitions).
+- Random word-pool / mad-libs generator that assembles sentences from the extracted vocabulary.
+- Word frequency analysis, total/unique word counts, and full vocabulary display.
+- Generation controls: mode, max words, Markov order, starting seed word, and reproducible random seed.
+- Download generated text as `.txt`.
+- `python-docx` dependency for `.docx` file support.
+
+### Changed
+- Refocused the app from manual audio transcription to text generation from uploaded text files.
+- Updated README, SUMMARY, AGENTS docs, and architecture diagram to reflect the new pipeline.
+
 ### Planned
-- Custom HTML5 audio player with rewind/forward buttons
-- Keyboard shortcuts for transcription (Ctrl+Space, Ctrl+Left/Right)
-- Export transcript as TXT/PDF
+- Keyboard shortcuts for playback (Ctrl+Space, Ctrl+Left/Right)
+- Export generated text as PDF
 - Dark mode theme
-- Auto-save transcripts to local storage
 - Batch file processing
 - Audio waveform visualization
 - Desktop executable (PyInstaller)

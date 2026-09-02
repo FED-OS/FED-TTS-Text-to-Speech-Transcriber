@@ -2,27 +2,31 @@
 
 ## What is FED TTS?
 
-FED TTS (Fluid Enhanced Dynamic Text-to-Speech) is a 100% offline, privacy-first transcription and text-to-speech application. It allows users to upload audio files, manually transcribe them, check spelling and grammar, and read text aloud—all without using any AI/ML APIs.
+FED TTS (Fluid Enhanced Dynamic Text Generator) is a 100% offline, privacy-first application that **generates new text from the words in your uploaded files**. You upload one or more text files (.txt, .csv, .md, .docx), and FED TTS extracts their words and produces fresh text built from your vocabulary — using a Markov chain that mimics your files' style or a random word-pool generator. You can then check spelling and grammar, and read the result aloud—all without using any AI/ML APIs.
 
 ## Key Features
 
 | Feature | Description |
 |---------|-------------|
-| 📂 File Upload | Supports MP3, WAV, M4A, FLAC, OGG |
-| 🎧 Audio Playback | Native player with speed controls |
-| ✍️ Manual Transcription | Professional text area with session persistence |
+| 📂 File Upload | Supports .txt, .csv, .md, .docx, .log, .json, .xml |
+| 🔍 Word Extraction | Automatically reads the words out of every uploaded file |
+| ✨ Markov Generation | Learns word transitions and mimics the style of your files |
+| 🎲 Random Pool Generation | Mad-libs–style sentences from your vocabulary |
+| 📊 Word Analysis | Frequency tables, total/unique counts, full vocabulary |
 | 🔍 Grammar Check | Dictionary-based spelling + regex grammar rules |
 | 🔊 Read Aloud | Native browser TTS (no cloud calls) |
+| 💾 Export | Download generated text as .txt |
 | 🔒 Privacy | 100% offline, no data leaves your machine |
 | 💯 No AI | Deterministic algorithms only, no neural networks |
 
 ## Architecture
 
 - **UI:** Streamlit (Python)
+- **Word Extraction:** python-docx + stdlib csv/decode (.txt, .csv, .md, .docx, …)
+- **Text Generation:** Markov chain (N-gram) + word-pool templates (deterministic)
 - **Spell Check:** pyspellchecker (dictionary-based)
 - **Grammar:** Regex rules (deterministic)
 - **TTS:** Web SpeechSynthesis API (native browser)
-- **Audio:** HTML5 audio with native controls
 - **Storage:** Session state (in-memory, local)
 
 ## Why "No AI"?
@@ -48,6 +52,8 @@ FED TTS (Fluid Enhanced Dynamic Text-to-Speech) is a 100% offline, privacy-first
 |-----------|-----------|-----|
 | Language | Python 3.8+ | Widely used, easy to maintain |
 | UI Framework | Streamlit 1.29+ | Rapid development, Python-native |
+| Text Generation | Markov chain + word pool | Deterministic, no AI |
+| File Reading | python-docx + stdlib | Reads .txt/.csv/.md/.docx |
 | Spell Check | pyspellchecker | Dictionary-based, no AI |
 | Grammar | Regex | Deterministic, transparent |
 | TTS | Browser SpeechSynthesis | OS-native, no cloud |
