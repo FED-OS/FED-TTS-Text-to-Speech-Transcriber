@@ -1,3 +1,5 @@
+<img width="1536" height="1024" alt="generated_image_6a4557de-fc86-4e6c-9ca0-1ce0c8397c75_0" src="https://github.com/user-attachments/assets/3cd535fa-a5df-4711-aaf8-c6add1fc3651" />
+
 # 🎙️ FED TTS - Fluid Enhanced Dynamic Text-to-Speech
 
 **Transcriber + Read Aloud + Grammarly-clone. 100% Offline. Zero AI.**
