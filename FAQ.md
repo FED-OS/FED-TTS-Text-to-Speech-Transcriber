@@ -6,8 +6,9 @@
 FED stands for **Fluid Enhanced Dynamic** Text-to-Speech. It represents our commitment to a smooth, enhanced, and dynamic user experience for transcription and text-to-speech.
 
 ### What makes FED TTS different from other transcription tools?
-FED TTS is **100% AI-free and offline**. Unlike tools like Otter.ai, Whisper, or AssemblyAI that use cloud-based AI models, FED TTS uses:
-- **Manual transcription** (you type what you hear)
+FED TTS is **privacy-first and 100% offline**. Unlike tools like Otter.ai or AssemblyAI that send your audio to cloud-based AI servers, FED TTS runs everything on your machine:
+- **Offline automatic speech recognition** (Vosk—a compact acoustic model that runs locally, no cloud calls)
+- **Manual transcription workspace** (you type what you hear)
 - **Dictionary-based spell checking** (pyspellchecker)
 - **Regex-based grammar rules** (deterministic patterns)
 - **Browser's native TTS** (operating system voices)
@@ -48,11 +49,21 @@ deactivate
 ## Usage
 
 ### How do I transcribe audio?
-1. Upload your audio file (MP3, WAV, M4A, FLAC, or OGG)
-2. Press play on the audio player
+**Automatic (recommended):**
+1. Upload your audio or video file (MP4, MOV, MKV, MP3, WAV, and more)
+2. Go to the "🤖 Auto Transcribe" tab and click "🤖 Transcribe Automatically"
+3. The offline Vosk engine converts speech to text; optionally enable `[mm:ss]` timestamps
+4. Edit the result in the transcript box, then click "💾 Download transcript (.txt)"
+
+**Manual:**
+1. Upload your audio or video file
+2. Press play on the media player
 3. Type what you hear in the text area
 4. Use right-click on the player for speed control to slow down difficult sections
 5. Click "Check Spelling & Grammar" when done
+
+### Does the automatic transcription send my audio to the cloud?
+No. The Vosk speech model runs entirely on your own machine. The only network activity is a **one-time** ~40 MB model download from alphacephei.com on first use (you can also pre-install the model manually). Your audio and text never leave your computer.
 
 ### How does the grammar checker work?
 The grammar checker uses two deterministic methods:

@@ -1,137 +1,22 @@
-# ✅ FED TTS Todo List
+# Fix FED TTS: auto-transcribe uploaded MP4 files
 
-## Core Features
-- [x] Text file upload (.txt, .csv, .md, .docx, .log, .json, .xml)
-- [x] Word extraction from uploaded files
-- [x] Word frequency analysis + full vocabulary display
-- [x] Total / unique word count metrics
-- [x] Markov chain text generator (N-gram, style mimic)
-- [x] Random word-pool generator (mad-libs style)
-- [x] Generation controls (mode, length, order, seed word, random seed)
-- [x] Reproducible generation via random seed
-- [x] Download generated text as .txt
-- [x] Dictionary-based spell check
-- [x] Regex-based grammar rules (would of, could of, should of, must of)
-- [x] Double space detection
-- [x] Passive voice detection
-- [x] Long sentence detection
-- [x] Repeated word detection
-- [x] Native browser TTS (read generated text aloud)
-- [x] Stop speech button
-- [ ] Keyboard shortcuts (Ctrl+Space, Ctrl+Left/Right)
+## Diagnosis
+- [x] Study project + all old versions (v1 text-generator fork, v2/v3/v4 manual "no AI" app)
+- [x] Identify issue 1: file_uploader rejects mp4 (only wav/mp3/m4a/flac/ogg)
+- [x] Identify issue 2: no automatic transcription exists (manual-only by design)
 
-## UI/UX Improvements
-- [x] Custom CSS styling
-- [x] Word count in sidebar
-- [x] Character count in sidebar
-- [x] Ko-fi support button in sidebar
-- [ ] Dark mode toggle
-- [ ] Progress bar for transcription
-- [ ] Export as TXT
-- [ ] Export as PDF
-- [ ] Auto-save drafts to local storage
-- [ ] Reading time estimate
-- [ ] Search and replace within transcript
+## Fix
+- [x] Copy v4 project to /workspace/fed-tts as base
+- [x] Install ffmpeg + Python deps (streamlit, vosk, pyspellchecker)
+- [x] Create auto_transcriber.py (Vosk offline STT + ffmpeg audio extraction)
+- [x] Update app.py: accept mp4/video files, "Transcribe automatically" button, progress, result fills transcript box; keep manual mode
+- [x] Update requirements.txt
+- [x] Add tests for auto transcriber (35 tests, all passing)
 
-## Documentation
-- [x] README.md
-- [x] CONTRIBUTING.md
-- [x] CODE_OF_CONDUCT.md
-- [x] SECURITY.md
-- [x] INSTALL.md
-- [x] BUILD.md
-- [x] DEPLOYMENT.md
-- [x] FAQ.md
-- [x] CHANGELOG.md
-- [x] ROADMAP.md
-- [x] ADR.md
-- [x] GOVERNANCE.md
-- [x] CITATIONS.md
-- [x] COPYING.md
-- [x] PRICING.md
-- [x] SUPPORT.md
-- [x] NOTICE.md
-- [x] USAGE.md
-- [x] CLAUDE.md
-- [x] AGENTS.md
-- [x] AUTHORS.md
-- [x] MAINTAINERS.md
-- [x] SUMMARY.md
-- [x] docs/index.md
-- [x] docs/api.md
-- [x] docs/architecture.md
-- [x] docs/quickstart.md
-- [ ] API reference (complete)
-- [ ] Video tutorial
-- [ ] Interactive examples
-
-## Testing
-- [x] Unit tests for grammar checker
-- [x] Unit tests for transcriber module
-- [x] Unit tests for TTS module
-- [x] Test app import
-- [ ] Integration tests
-- [x] CI/CD integration (GitHub Actions)
-- [ ] Test coverage > 90%
-- [ ] Performance tests
-
-## Configuration & Infrastructure
-- [x] pyproject.toml
-- [x] requirements.txt
-- [x] requirements-dev.txt
-- [x] .gitignore
-- [x] .pre-commit-config.yaml
-- [x] environment.yml
-- [x] Dockerfile
-- [x] Procfile
-- [x] setup.sh
-- [x] MANIFEST.in
-- [x] styles.css
-- [x] social-image.png
-- [ ] icon.ico (for PyInstaller)
-
-## GitHub Configuration
-- [x] FUNDING.yml (Ko-fi)
-- [x] CODEOWNERS
-- [x] dependabot.yml
-- [x] labeler.yml
-- [x] Issue templates (bug, feature, custom)
-- [x] config.yml for issues
-- [x] PR template
-- [x] Discussion welcome readme
-- [x] 16 GitHub Actions workflows
-
-## Performance
-- [ ] Optimize file handling for large files
-- [ ] Lazy loading for large audio files
-- [ ] Cache management for session state
-- [ ] Streaming audio playback
-
-## Community
-- [x] GitHub Discussions enabled
-- [x] Issue templates
-- [x] PR template
-- [x] FUNDING.yml (Ko-fi)
-- [ ] Community spotlight in README
-- [ ] Contributing guidelines video
-- [ ] Good first issues labeled
-
-## Future (v1.0)
-- [ ] Desktop executable (PyInstaller)
-- [ ] Multiple language support
-- [ ] Plugin system for grammar rules
-- [ ] Audio waveform visualization
-- [ ] Batch processing
-- [ ] Browser extension
-- [ ] Mobile app companion
-- [ ] Auto-update mechanism
-
-## Known Issues
-- [ ] Player controls need improvement (custom HTML5 player planned)
-- [ ] Large files (>100MB) may cause performance issues
-- [ ] Native TTS voices vary by OS
-- [ ] Session state is lost on page refresh
-
----
-
-**Last Updated:** 2026-01-01
+## Verify
+- [x] Create a real speech mp4 test file (LibriVox human speech → ffmpeg → MP4/AAC)
+- [x] Run unit tests
+- [x] Live-run the app and auto-transcribe the test mp4 end-to-end (64 words from 30.5s audio; transcript visible in both tabs; sidebar stats; download button; grammar check + read aloud verified)
+- [x] Fix transcript display session-state bug found during live testing
+- [x] Update README.md, usage.md, FAQ.md, CHANGELOG.md for MP4/video + auto transcription
+- [x] Package fixed project as zip and deliver
