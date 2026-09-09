@@ -1,7 +1,5 @@
 # 🎙️ FED TTS - Fluid Enhanced Dynamic Text-to-Speech
 
-https://fed-tts-text-to-speech-transcriber-ie9ojoeubcangs4hqvhm6h.streamlit.app/
-
 **Transcriber + Read Aloud + Grammarly-clone. 100% Offline. Privacy-first.**
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
